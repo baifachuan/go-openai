@@ -61,12 +61,6 @@ func (c *Client) CreateChatCompletion(
 	ctx context.Context,
 	request ChatCompletionRequest,
 ) (response ChatCompletionResponse, err error) {
-	model := request.Model
-	if model != GPT3Dot5Turbo0301 && model != GPT3Dot5Turbo {
-		err = ErrChatCompletionInvalidModel
-		return
-	}
-
 	var reqBytes []byte
 	reqBytes, err = json.Marshal(request)
 	if err != nil {
